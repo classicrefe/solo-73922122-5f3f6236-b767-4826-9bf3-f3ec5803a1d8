@@ -1,0 +1,16 @@
+services:
+  retrocalc:
+    build: .
+    image: retrocalc:latest
+    container_name: retrocalc
+    ports:
+      - "8000:8000"
+    volumes:
+      - retrocalc-data:/data
+    environment:
+      APP_DB_PATH: /data/app.db
+      APP_SEED: "1"
+    restart: unless-stopped
+
+volumes:
+  retrocalc-data:
